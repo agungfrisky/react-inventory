@@ -19,7 +19,7 @@ const AddForm: React.FC<AddFormProps> = ({ isOpen, onClose }) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const data = JSON.parse(localStorage.getItem("incomingGoods") || "[]");
+        const data = JSON.parse(localStorage.getItem("incomingData") || "[]");
 
         const newData = {
             id: data.length + 1,
@@ -32,7 +32,7 @@ const AddForm: React.FC<AddFormProps> = ({ isOpen, onClose }) => {
             adress,
         };
 
-        localStorage.setItem("incomingGoods", JSON.stringify([...data, newData])
+        localStorage.setItem("incomingData", JSON.stringify([...data, newData])
         );
 
         onClose();
@@ -44,7 +44,7 @@ const AddForm: React.FC<AddFormProps> = ({ isOpen, onClose }) => {
             <div id="defaultModal" tabIndex={-1} aria-hidden="true" className="bg-black bg-transparent overflow-y-auto overflow-x-hidden fixed flex justify-center items-center w-full shadow-2xl md:inset-0 h-modal md:h-full">
                 <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
                     {/* <!-- Modal content --> */}
-                    <div className="relative p-4 bg-white rounded-lg shadow-2xl sm:p-5">
+                    <div className="relative outline-2 outline-gray-400 p-4 bg-white rounded-lg shadow-2xl sm:p-5">
                         {/* <!-- Modal header --> */}
                         <div className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5">
                             <h3 className="text-lg font-semibold text-green-500">

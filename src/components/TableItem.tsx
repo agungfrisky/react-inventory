@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Data {
     id: number;
@@ -17,10 +18,16 @@ const ItemCard = () => {
     const [editingItem, setEditingItem] = useState<Data | null>(null);
     const [showModalEdit, setShowModalEdit] = useState(false);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
-        const storedData = JSON.parse(localStorage.getItem("incomingGoods") || "[]");
+        const storedData = JSON.parse(localStorage.getItem("incomingData") || "[]");
         setData(storedData);
     }, []);
+
+    const handleMaintenance = (item: Data) => {
+    navigate(`/MaintenancePage/${item.id}`);
+    };
 
     const handleEdit = (item: Data) => {
         setEditingItem(item);
@@ -33,19 +40,19 @@ const ItemCard = () => {
         item.id === editingItem.id ? editingItem : item
         );
         setData(newData);
-        localStorage.setItem("incomingGoods", JSON.stringify(newData));
+        localStorage.setItem("incomingData", JSON.stringify(newData));
         setShowModalEdit(false);
     };
 
     const handleDelete =  (id: number) => {
         const newData = data.filter((item) => item.id !== id);
         setData(newData);
-        localStorage.setItem("incomingGoods", JSON.stringify(newData));
+        localStorage.setItem("incomingData", JSON.stringify(newData));
     }
 
     return (
         <>
-            <table className="table-fixed mx-15 border-collapse border border-gray-400">
+            <table className="table-fixed text-sm mx-15 border-collapse border border-gray-400">
                 <thead>
                     <tr>
                     <th className="border w-20 h-15 border-gray-300">No</th>
@@ -72,23 +79,29 @@ const ItemCard = () => {
                                 <td className="border h-10 px-5 border-gray-300">{item.institute}</td>
                                 <td className="border h-10 px-5 border-gray-300">{item.adress}</td>
                                 <td className="border text-center h-10 border-gray-300">
-                                    <button
-                                        onClick={() => handleEdit(item)}
-                                        className="text-md font-semibold px-4 py-1 mx-1 rounded-xl text-white bg-blue-600 hover:bg-blue-500"
-                                    >
-                                        Ubah
-                                    </button>
-                                    <button
-                                        className="text-md font-semibold px-4 py-1 mx-1 rounded-xl text-white bg-green-600 hover:bg-green-500"
-                                    >
-                                        Maintenance
-                                    </button>
-                                    <button 
-                                        onClick={() => handleDelete(item.id)}
-                                        className="text-md font-semibold px-4 py-1 mx-1 rounded-xl text-white bg-red-600 hover:bg-red-500"
-                                    >
-                                        Hapus
-                                    </button>
+                                    <div>
+                                        <button
+                                            onClick={() => handleMaintenance(item)}
+                                            className="text-md font-semibold px-4 py-1 m-1 rounded-md text-white bg-green-600 hover:bg-green-500"
+                                        >
+                                            Maintenance Log
+                                        </button>
+                                        <div className="flex justify-center">
+                                            <button
+                                                onClick={() => handleEdit(item)}
+                                                className="text-md font-semibold px-4 py-1 mb-1 rounded-md text-white bg-blue-600 hover:bg-blue-500"
+                                            >
+                                                Ubah
+                                            </button>
+                                            <button 
+                                                onClick={() => handleDelete(item.id)}
+                                                className="text-md font-semibold px-4 py-1 mb-1 mx-1 rounded-md text-white bg-red-600 hover:bg-red-500"
+                                            >
+                                                Hapus
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
                                 </td>
                             </tr>
                         ))
@@ -105,7 +118,7 @@ const ItemCard = () => {
             {/* Modal Edit */}
             {showModalEdit && editingItem && (
                 <div className="bg-black bg-transparent overflow-y-auto overflow-x-hidden fixed flex justify-center items-center w-full shadow-2xl md:inset-0 h-modal md:h-full">
-                    <div className="outline-2 outline-gray-300 relative p-4 w-full bg-white rounded-lg max-w-2xl h-full md:h-auto">
+                    <div className="outline-2 outline-gray-400 relative p-4 w-full bg-white rounded-lg max-w-2xl h-full md:h-auto">
                         <h2 className="text-xl text-green-500 font-semibold mb-4">Edit Barang</h2>
                         <form
                             onSubmit={(e) => { e.preventDefault();
