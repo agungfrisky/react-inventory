@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import ItemCard from "../components/TableItem";
+import TableItem from "../components/TableItem";
 import SearchBox from "../components/SearchBox";
 import DropDown from "../components/DropDown";
 import AddForm from "../components/AddForm";
@@ -25,7 +25,7 @@ const InventoryPage = () => {
                     Tambah Item
                 </button>
             </div>
-            <ItemCard />
+            <TableItem />
 
             <AddForm isOpen={showModal} onClose={() => setShowModal(false)} />
         </>
