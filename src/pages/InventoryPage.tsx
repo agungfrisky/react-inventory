@@ -7,7 +7,6 @@ import { useState } from "react";
 
 const InventoryPage = () => {
     const [showModal, setShowModal] = useState(false);
-    console.log("ini show modal", showModal);
 
     return (
         <>

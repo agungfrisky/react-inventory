@@ -105,7 +105,7 @@ const ItemCard = () => {
             {/* Modal Edit */}
             {showModalEdit && editingItem && (
                 <div className="bg-black bg-transparent overflow-y-auto overflow-x-hidden fixed flex justify-center items-center w-full shadow-2xl md:inset-0 h-modal md:h-full">
-                    <div className="relative p-4 w-full bg-white rounded-lg max-w-2xl h-full md:h-auto">
+                    <div className="outline-2 outline-gray-300 relative p-4 w-full bg-white rounded-lg max-w-2xl h-full md:h-auto">
                         <h2 className="text-xl text-green-500 font-semibold mb-4">Edit Barang</h2>
                         <form
                             onSubmit={(e) => { e.preventDefault();
@@ -119,7 +119,7 @@ const ItemCard = () => {
                                         value={editingItem.productionDate}
                                         onChange={(e) => setEditingItem({ ...editingItem, productionDate: e.target.value })
                                         }
-                                        className="w-full border px-3 py-2 rounded mb-3"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     />
                                 </div>
                                 <div>
@@ -128,7 +128,7 @@ const ItemCard = () => {
                                         value={editingItem.productionStart}
                                         onChange={(e) => setEditingItem({ ...editingItem, productionStart: e.target.value })
                                         }
-                                        className="w-full border px-3 py-2 rounded mb-3"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     />
                                 </div>
                                 <div>
@@ -137,7 +137,7 @@ const ItemCard = () => {
                                         type="number" value={editingItem.readyStock}
                                         onChange={(e) => setEditingItem({ ...editingItem, readyStock: e.target.value })
                                         }
-                                        className="w-full border px-3 py-2 rounded mb-3"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     />
                                 </div>
                                 <div>
@@ -147,7 +147,7 @@ const ItemCard = () => {
                                         value={editingItem.customerInformation}
                                         onChange={(e) => setEditingItem({ ...editingItem, customerInformation: e.target.value })
                                         }
-                                        className="w-full border px-3 py-2 rounded mb-3"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     />
                                 </div>
                                 <div>
@@ -157,7 +157,7 @@ const ItemCard = () => {
                                         value={editingItem.name}
                                         onChange={(e) => setEditingItem({ ...editingItem, name: e.target.value })
                                         }
-                                        className="w-full border px-3 py-2 rounded mb-3"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     />
                                 </div>
                                 <div>
@@ -167,7 +167,7 @@ const ItemCard = () => {
                                         value={editingItem.institute}
                                         onChange={(e) => setEditingItem({ ...editingItem, institute: e.target.value })
                                         }
-                                        className="w-full border px-3 py-2 rounded mb-3"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     />
                                 </div>
                                 <div className="sm:col-span-2">
@@ -184,13 +184,13 @@ const ItemCard = () => {
                                     <button
                                         type="button"
                                         onClick={() => setShowModalEdit(false)}
-                                        className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+                                        className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-red-600 hover:text-white"
                                     >
                                         Batal
                                     </button>
                                     <button
                                         type="submit"
-                                        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                                        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
                                     >
                                         Simpan
                                     </button>

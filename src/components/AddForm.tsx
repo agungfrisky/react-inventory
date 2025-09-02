@@ -19,12 +19,10 @@ const AddForm: React.FC<AddFormProps> = ({ isOpen, onClose }) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Ambil data lama dari localStorage
         const data = JSON.parse(localStorage.getItem("incomingGoods") || "[]");
 
-        // Buat data baru dengan ID unik
         const newData = {
-            id: Date.now(),
+            id: data.length + 1,
             productionDate,
             productionStart,
             readyStock,
@@ -34,7 +32,6 @@ const AddForm: React.FC<AddFormProps> = ({ isOpen, onClose }) => {
             adress,
         };
 
-        // Simpan ke localStorage
         localStorage.setItem("incomingGoods", JSON.stringify([...data, newData])
         );
 
