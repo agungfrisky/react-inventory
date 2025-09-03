@@ -71,13 +71,14 @@ const MaintenancePage = () => {
                 <p className="text-md font-semibold col-span-3">Alamat  : {item.adress}</p>
             </div>
             {/* Tombol Tambah Log */}
-            <button
-                onClick={() => setShowModal(true)}
-                className="text-md font-semibold px-4 py-2 mb-4 rounded-md text-white bg-green-600 hover:bg-green-500"
-            >
-                Tambah Maintenance Log
-            </button>
-            
+            <div className="w-full flex justify-start">
+                <button
+                    onClick={() => setShowModal(true)}
+                    className="text-md font-semibold px-4 py-2 mb-4 rounded-md text-white bg-green-600 hover:bg-green-500"
+                >
+                    Tambah Maintenance Log
+                </button>
+            </div>
             <TableMaintenance itemId={item.id} />
         </div>
 
